@@ -1,6 +1,13 @@
+using Microsoft.EntityFrameworkCore;
+using Shopping.Api.Models.Context;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+var connection = builder.Configuration["MySqlConnection:MySqlConnectionString"];
+
+builder.Services.AddDbContext<MySqlContext>(options => options.
+    UseMySql(connection, new MySqlServerVersion(new Version(8, 0, 5))));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
