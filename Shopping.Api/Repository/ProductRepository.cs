@@ -10,22 +10,20 @@ namespace Shopping.Api.Repository
     {
         private readonly MySqlContext _context;
         private IMapper _mapper;
-        private DbSet<Product> _dbSet;
         public ProductRepository(
             MySqlContext context,
-            IMapper mapper,
-            DbSet<Product> dbSet)
+            IMapper mapper
+            )
         {
             _context = context;
             _mapper = mapper;
-            _dbSet = dbSet;
         }
 
         public async Task<ProductVO>? Create(ProductVO vo)
         {
             var product = _mapper.Map<Product>(vo);
 
-            _dbSet.Add(product);
+            _context.Products.Add(product);
 
             await _context.SaveChangesAsync();
 
@@ -36,11 +34,11 @@ namespace Shopping.Api.Repository
         {
             try
             {
-                var products = await _dbSet.FirstOrDefaultAsync(p => p.Id == id);
+                var products = await _context.Products.FirstOrDefaultAsync(p => p.Id == id);
 
                 if (products == null) return false;
 
-                _dbSet.Remove(products);
+                _context.Products.Remove(products);
 
                 await _context.SaveChangesAsync();
 
@@ -54,14 +52,14 @@ namespace Shopping.Api.Repository
 
         public async Task<IEnumerable<ProductVO>> FindAll()
         {
-            var products = await _dbSet.ToListAsync();
+            var products = await _context.Products.ToListAsync();
 
             return _mapper.Map<IEnumerable<ProductVO>>(products);
         }
 
         public async Task<ProductVO> FindById(long id)
         {
-            var products = await _dbSet.FirstOrDefaultAsync(p => p.Id == id);
+            var products = await _context.Products.FirstOrDefaultAsync(p => p.Id == id);
 
             return _mapper.Map<ProductVO>(products);
         }
@@ -70,7 +68,7 @@ namespace Shopping.Api.Repository
         {
             var product = _mapper.Map<Product>(vo);
 
-            _dbSet.Update(product);
+            _context.Products.Update(product);
 
             await _context.SaveChangesAsync();
 
