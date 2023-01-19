@@ -1,0 +1,19 @@
+using System.ComponentModel.DataAnnotations.Schema;
+using Shopping.Car.Models.Base;
+
+namespace Shopping.Car.Models
+{
+    [Table("card_details")]
+    public class CardDetails : BaseEntity
+    {
+        public long CardHeaderId { get; set; }
+
+        [ForeignKey("cart_header_id")]
+        public CartHeader? CartHeader { get; set; }
+
+        public long ProductId { get; set; }
+        [ForeignKey("product_id")]
+        public Product? Product { get; set; }
+        public int Count { get; set; }
+    }
+}
