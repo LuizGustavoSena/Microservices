@@ -1,12 +1,15 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Shopping.Car.Models.Base;
 
 namespace Shopping.Car.Models
 {
     [Table("product")]
-    public class Product : BaseEntity
+    public class Product
     {
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Column("id")]
+        public long Id { get; set; }
+
         [Column("name")]
         [Required]
         [StringLength(150)]
