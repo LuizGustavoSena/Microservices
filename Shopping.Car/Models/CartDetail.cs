@@ -3,8 +3,8 @@ using Shopping.Car.Models.Base;
 
 namespace Shopping.Car.Models
 {
-    [Table("card_details")]
-    public class CardDetails : BaseEntity
+    [Table("card_detail")]
+    public class CartDetail : BaseEntity
     {
         public long CardHeaderId { get; set; }
 
