@@ -1,4 +1,6 @@
 using AutoMapper;
+using Shopping.Car.Data.ValueObject;
+using Shopping.Car.Models;
 
 namespace Shopping.Car.Config
 {
@@ -8,9 +10,17 @@ namespace Shopping.Car.Config
         {
             var mappingConfig = new MapperConfiguration(config =>
             {
-                // config.CreateMap<ProductVO, Product>()
-                //     .ReverseMap();
+                config.CreateMap<ProductVO, Product>()
+                    .ReverseMap();
 
+                config.CreateMap<CartHeaderVO, CartHeader>()
+                    .ReverseMap();
+
+                config.CreateMap<CartDetailVO, CartDetail>()
+                    .ReverseMap();
+
+                config.CreateMap<CartVO, Cart>()
+                                    .ReverseMap();
             });
 
             return mappingConfig;
