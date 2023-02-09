@@ -73,10 +73,24 @@ namespace Shopping.Car.Repository
                 _context.CartDetails.Add(cart.CartDetails.FirstOrDefault());
 
                 await _context.SaveChangesAsync();
+            }
+            else
+            {
+                var cartDetails = await _context.CartDetails.AsNoTracking().FirstOrDefaultAsync(el =>
+                    el.ProductId == vo.CartDetails.FirstOrDefault().ProductId &&
+                    el.CardHeaderId == cartHeader.Id);
 
+                if (cartDetails == null)
+                {
+
+                }
+                else
+                {
+
+                }
             }
 
-            throw new NotImplementedException();
+            return _mapper.Map<CartVO>(cart);
         }
     }
 }
