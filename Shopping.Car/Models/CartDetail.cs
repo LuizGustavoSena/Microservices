@@ -9,11 +9,11 @@ namespace Shopping.Car.Models
         public long CardHeaderId { get; set; }
 
         [ForeignKey("cart_header_id")]
-        public CartHeader? CartHeader { get; set; }
+        public CartHeader CartHeader { get; set; }
 
         public long ProductId { get; set; }
         [ForeignKey("product_id")]
-        public Product? Product { get; set; }
+        public Product Product { get; set; }
         public int Count { get; set; }
     }
 }
