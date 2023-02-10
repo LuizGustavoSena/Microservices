@@ -67,7 +67,6 @@ namespace Shopping.Car.Repository
                 await _context.SaveChangesAsync();
 
                 cart.CartDetails.FirstOrDefault().CardHeaderId = cart.CartHeader.Id;
-
                 cart.CartDetails.FirstOrDefault().Product = null;
 
                 _context.CartDetails.Add(cart.CartDetails.FirstOrDefault());
@@ -76,17 +75,28 @@ namespace Shopping.Car.Repository
             }
             else
             {
-                var cartDetails = await _context.CartDetails.AsNoTracking().FirstOrDefaultAsync(el =>
+                var cartDetail = await _context.CartDetails.AsNoTracking().FirstOrDefaultAsync(el =>
                     el.ProductId == vo.CartDetails.FirstOrDefault().ProductId &&
                     el.CardHeaderId == cartHeader.Id);
 
-                if (cartDetails == null)
+                if (cartDetail == null)
                 {
+                    cart.CartDetails.FirstOrDefault().CardHeaderId = cart.CartHeader.Id;
+                    cart.CartDetails.FirstOrDefault().Product = null;
 
+                    _context.CartDetails.Add(cart.CartDetails.FirstOrDefault());
+
+                    await _context.SaveChangesAsync();
                 }
                 else
                 {
+                    cart.CartDetails.FirstOrDefault().Count += cartDetail.Count;
+                    cart.CartDetails.FirstOrDefault().Id = cartDetail.Id;
+                    cart.CartDetails.FirstOrDefault().CardHeaderId = cartDetail.CardHeaderId;
 
+                    _context.CartDetails.Update(cart.CartDetails.FirstOrDefault());
+
+                    await _context.SaveChangesAsync();
                 }
             }
 
