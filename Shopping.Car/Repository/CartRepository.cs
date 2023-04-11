@@ -52,7 +52,32 @@ namespace Shopping.Car.Repository
 
         public async Task<bool> RemoveFromCart(long cartDetailsid)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var cartDetails = await _context.CartDetails
+                .FirstOrDefaultAsync(el => el.Id == cartDetailsid);
+
+                int total = _context.CartDetails
+                    .Where(el => el.CardHeaderId == cartDetails.CardHeaderId)
+                    .Count();
+
+                if (total == 1)
+                {
+                    var cartHeaderToRemove = await _context.CartHeaders
+                        .FirstOrDefaultAsync(el => el.Id == cartDetails.CardHeaderId);
+
+                    _context.CartHeaders.Remove(cartHeaderToRemove);
+                }
+
+                await _context.SaveChangesAsync();
+
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
         }
 
         public async Task<CartVO> SaveOrUpdateCart(CartVO vo)
