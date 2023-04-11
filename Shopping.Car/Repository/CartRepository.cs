@@ -25,7 +25,22 @@ namespace Shopping.Car.Repository
 
         public async Task<bool> ClearCart(string userId)
         {
-            throw new NotImplementedException();
+            var cartHeader = await _context.CartHeaders
+                        .FirstOrDefaultAsync(el => el.UserId == userId);
+
+            if (cartHeader == null)
+                return false;
+
+            _context.CartDetails
+                .RemoveRange(
+                    _context.CartDetails.Where(el => el.CartHeader.Id == cartHeader.Id)
+                );
+
+            _context.CartHeaders.Remove(cartHeader);
+
+            await _context.SaveChangesAsync();
+
+            return true;
         }
 
         public async Task<CartVO> FindCartByUserId(string userId)
