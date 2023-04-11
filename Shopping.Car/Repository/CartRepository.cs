@@ -30,7 +30,19 @@ namespace Shopping.Car.Repository
 
         public async Task<CartVO> FindCartByUserId(string userId)
         {
-            throw new NotImplementedException();
+            Cart cart = new()
+            {
+                CartHeader = await _context.CartHeaders
+                    .FirstOrDefaultAsync(el =>
+                        el.UserId == userId
+                    ),
+            };
+
+            cart.CartDetails = _context.CartDetails
+                .Where(el => el.CardHeaderId == cart.CartHeader.Id)
+                .Include(el => el.Product);
+
+            return _mapper.Map<CartVO>(cart);
         }
 
         public async Task<bool> RemoveCoupon(string userId)
