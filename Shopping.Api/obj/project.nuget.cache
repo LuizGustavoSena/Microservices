@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "BHrpEZP5AbbsiAChfZ/q7llKmBu6WsiG2VrD5rk+9xkauCp2RIRtr9cagyEb6GPe6bQkVmuvtUAhaidmfux98g==",
+  "dgSpecHash": "kBfaYRWcw3TaC0hIlxehWzzE6SSYzwm0MWyIC1D5HrYINSqxScYiis8u5MmdxZx3l/qb9Y7vdGeT0fpbLiZByg==",
   "success": true,
   "projectFilePath": "/Users/luizsena/Documents/Projetos/C#/Microservices/Shopping.Api/Shopping.Api.csproj",
   "expectedPackageFiles": [
@@ -42,10 +42,7 @@
     "/Users/luizsena/.nuget/packages/system.diagnostics.diagnosticsource/6.0.0/system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
     "/Users/luizsena/.nuget/packages/system.identitymodel.tokens.jwt/6.10.0/system.identitymodel.tokens.jwt.6.10.0.nupkg.sha512",
     "/Users/luizsena/.nuget/packages/system.runtime.compilerservices.unsafe/6.0.0/system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
-    "/Users/luizsena/.nuget/packages/system.security.cryptography.cng/4.5.0/system.security.cryptography.cng.4.5.0.nupkg.sha512",
-    "/Users/luizsena/.nuget/packages/microsoft.netcore.app.ref/6.0.11/microsoft.netcore.app.ref.6.0.11.nupkg.sha512",
-    "/Users/luizsena/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.11/microsoft.aspnetcore.app.ref.6.0.11.nupkg.sha512",
-    "/Users/luizsena/.nuget/packages/microsoft.netcore.app.host.osx-arm64/6.0.11/microsoft.netcore.app.host.osx-arm64.6.0.11.nupkg.sha512"
+    "/Users/luizsena/.nuget/packages/system.security.cryptography.cng/4.5.0/system.security.cryptography.cng.4.5.0.nupkg.sha512"
   ],
   "logs": []
 }

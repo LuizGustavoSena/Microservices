@@ -128,12 +128,12 @@ namespace Shopping.Car.Repository
             else
             {
                 var cartDetail = await _context.CartDetails.AsNoTracking().FirstOrDefaultAsync(el =>
-                    el.ProductId == vo.CartDetails.FirstOrDefault().ProductId &&
+                    el.ProductId == cart.CartDetails.FirstOrDefault().ProductId &&
                     el.CardHeaderId == cartHeader.Id);
 
                 if (cartDetail == null)
                 {
-                    cart.CartDetails.FirstOrDefault().CardHeaderId = cart.CartHeader.Id;
+                    cart.CartDetails.FirstOrDefault().CardHeaderId = cartHeader.Id;
                     cart.CartDetails.FirstOrDefault().Product = null;
 
                     _context.CartDetails.Add(cart.CartDetails.FirstOrDefault());
