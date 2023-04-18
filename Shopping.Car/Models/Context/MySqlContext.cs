@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-
 namespace Shopping.Car.Models.Context
 {
     public class MySqlContext : DbContext
