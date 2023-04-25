@@ -1,6 +1,22 @@
+using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using Shopping.Coupon.Config;
+using Shopping.Coupon.Models.Context;
+using Shopping.Coupon.Repository;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+var connection = builder.Configuration["MySqlConnection:MySqlConnectionString"];
+
+builder.Services.AddDbContext<MySqlContext>(options => options.
+    UseMySql(connection, new MySqlServerVersion(new Version(8, 0, 5))));
+
+IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
+builder.Services.AddSingleton(mapper);
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+// builder.Services.AddScoped<ICartRepository, CartRepository>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -15,8 +31,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
-app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
