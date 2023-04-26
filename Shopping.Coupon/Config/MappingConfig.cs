@@ -1,4 +1,6 @@
 using AutoMapper;
+using Shopping.Coupon.Data.ValueObjects;
+using Shopping.Coupon.Models;
 
 namespace Shopping.Coupon.Config
 {
@@ -8,8 +10,8 @@ namespace Shopping.Coupon.Config
         {
             var mappingConfig = new MapperConfiguration(config =>
             {
-                // config.CreateMap<ProductVO, Product>()
-                //     .ReverseMap();
+                config.CreateMap<CouponVO, CouponC>()
+                    .ReverseMap();
             });
 
             return mappingConfig;
