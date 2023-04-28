@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shopping.Coupon", "Shopping
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shopping.Car", "Shopping.Car\Shopping.Car.csproj", "{0E75F116-B90C-4806-B42F-C3E680A8E713}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shopping.MessageBus", "Shopping.MessageBus\Shopping.MessageBus.csproj", "{062F75C1-2476-4535-A23F-3DAFF7E85E2E}"
+EndProject
 Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -58,5 +60,17 @@ Global
 		{0E75F116-B90C-4806-B42F-C3E680A8E713}.Release|x64.Build.0 = Release|Any CPU
 		{0E75F116-B90C-4806-B42F-C3E680A8E713}.Release|x86.ActiveCfg = Release|Any CPU
 		{0E75F116-B90C-4806-B42F-C3E680A8E713}.Release|x86.Build.0 = Release|Any CPU
+		{062F75C1-2476-4535-A23F-3DAFF7E85E2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{062F75C1-2476-4535-A23F-3DAFF7E85E2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{062F75C1-2476-4535-A23F-3DAFF7E85E2E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{062F75C1-2476-4535-A23F-3DAFF7E85E2E}.Debug|x64.Build.0 = Debug|Any CPU
+		{062F75C1-2476-4535-A23F-3DAFF7E85E2E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{062F75C1-2476-4535-A23F-3DAFF7E85E2E}.Debug|x86.Build.0 = Debug|Any CPU
+		{062F75C1-2476-4535-A23F-3DAFF7E85E2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{062F75C1-2476-4535-A23F-3DAFF7E85E2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{062F75C1-2476-4535-A23F-3DAFF7E85E2E}.Release|x64.ActiveCfg = Release|Any CPU
+		{062F75C1-2476-4535-A23F-3DAFF7E85E2E}.Release|x64.Build.0 = Release|Any CPU
+		{062F75C1-2476-4535-A23F-3DAFF7E85E2E}.Release|x86.ActiveCfg = Release|Any CPU
+		{062F75C1-2476-4535-A23F-3DAFF7E85E2E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
