@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Shopping.Car.Data.ValueObject;
+using Shopping.Car.Messages;
 using Shopping.Car.Repository;
 
 namespace Shopping.Car.Controllers
@@ -53,6 +54,42 @@ namespace Shopping.Car.Controllers
             if (!status) return BadRequest();
 
             return Ok(status);
+        }
+
+        [HttpPost("apply-coupon")]
+        public async Task<ActionResult<IEnumerable<CartVO>>> ApplyCoupon(CartVO vo)
+        {
+            var status = await _repository.ApplyCoupon(vo.CartHeader.UserId, vo.CartHeader.CouponCode);
+
+            if (!status) return NotFound();
+
+            return Ok(status);
+        }
+
+        [HttpDelete("remove-coupon/{userId}")]
+        public async Task<ActionResult<IEnumerable<CartVO>>> RemoveCoupon(string userId)
+        {
+            var status = await _repository.RemoveCoupon(userId);
+
+            if (!status) return NotFound();
+
+            return Ok(status);
+        }
+
+        [HttpPost("checkout")]
+        public async Task<ActionResult<IEnumerable<CartVO>>> Checkout(CheckoutHeaderVO vo)
+        {
+            if (vo.UserId == null)
+                return BadRequest();
+
+            var cart = await _repository.FindCartByUserId(vo.UserId);
+
+            if (cart == null) return NotFound();
+
+            vo.CartDetails = cart.CartDetails;
+            vo.DateTime = DateTime.Now;
+
+            return Ok(vo);
         }
     }
 }

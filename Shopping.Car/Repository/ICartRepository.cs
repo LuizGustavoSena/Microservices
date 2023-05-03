@@ -7,7 +7,7 @@ namespace Shopping.Car.Repository
         Task<CartVO> FindCartByUserId(string userId);
         Task<CartVO> SaveOrUpdateCart(CartVO cart);
         Task<bool> RemoveFromCart(long cartDetailsid);
-        Task<bool> ApplyCoupon(string userid, string coupenCuie);
+        Task<bool> ApplyCoupon(string userid, string coupenCode);
         Task<bool> RemoveCoupon(string userId);
         Task<bool> ClearCart(string userId);
 

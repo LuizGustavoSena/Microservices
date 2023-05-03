@@ -18,9 +18,20 @@ namespace Shopping.Car.Repository
             _context = context;
             _mapper = mapper;
         }
-        public async Task<bool> ApplyCoupon(string userid, string coupenCuie)
+        public async Task<bool> ApplyCoupon(string userid, string coupenCode)
         {
-            throw new NotImplementedException();
+            var header = await _context.CartHeaders
+                .FirstOrDefaultAsync(c => c.UserId == userid);
+
+            if (header == null)
+                return false;
+
+            header.CouponCode = coupenCode;
+            _context.CartHeaders.Update(header);
+
+            await _context.SaveChangesAsync();
+
+            return true;
         }
 
         public async Task<bool> ClearCart(string userId)
@@ -62,7 +73,18 @@ namespace Shopping.Car.Repository
 
         public async Task<bool> RemoveCoupon(string userId)
         {
-            throw new NotImplementedException();
+            var header = await _context.CartHeaders
+                .FirstOrDefaultAsync(c => c.UserId == userId);
+
+            if (header == null)
+                return false;
+
+            header.CouponCode = "";
+            _context.CartHeaders.Update(header);
+
+            await _context.SaveChangesAsync();
+
+            return true;
         }
 
         public async Task<bool> RemoveFromCart(long cartDetailsid)
