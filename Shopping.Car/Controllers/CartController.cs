@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Shopping.Car.Data.ValueObject;
 using Shopping.Car.Messages;
+using Shopping.Car.RabbitMQSender;
 using Shopping.Car.Repository;
 
 namespace Shopping.Car.Controllers
@@ -10,10 +11,15 @@ namespace Shopping.Car.Controllers
     public class CartController : ControllerBase
     {
         private ICartRepository _repository;
+        private IRabbitMQMessageSender _rabbitMQMessageSender;
 
-        public CartController(ICartRepository repository)
+        public CartController(
+            ICartRepository repository,
+            IRabbitMQMessageSender rabbitMQMessageSender
+            )
         {
             _repository = repository;
+            _rabbitMQMessageSender = rabbitMQMessageSender;
         }
 
         [HttpGet("find-cart/{id}")]
@@ -88,6 +94,8 @@ namespace Shopping.Car.Controllers
 
             vo.CartDetails = cart.CartDetails;
             vo.DateTime = DateTime.Now;
+
+            _rabbitMQMessageSender.SendMessage(vo, "checkoutqueue");
 
             return Ok(vo);
         }
