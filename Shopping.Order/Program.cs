@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Shopping.Order.Models.Context;
+using Shopping.Order.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,13 @@ var connection = builder.Configuration["MySqlConnection:MySqlConnectionString"];
 
 builder.Services.AddDbContext<MySqlContext>(options => options.
     UseMySql(connection, new MySqlServerVersion(new Version(8, 0, 5))));
+
+var builderContext = new DbContextOptionsBuilder<MySqlContext>();
+builderContext.UseMySql(connection,
+    new MySqlServerVersion(new Version(8, 0, 5))
+);
+
+builder.Services.AddSingleton(new OrderRepository(builderContext.Options));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
