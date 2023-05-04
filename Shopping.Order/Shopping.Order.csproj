@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <NoWarn>8602;8618;1998;8625;8604;8601</NoWarn>
+    <NoWarn>8602;8618;1998;8625;8604;8601;8600</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>

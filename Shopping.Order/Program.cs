@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Shopping.Order.MessageConsumer;
 using Shopping.Order.Models.Context;
 using Shopping.Order.Repository;
 
@@ -16,6 +17,8 @@ builderContext.UseMySql(connection,
 );
 
 builder.Services.AddSingleton(new OrderRepository(builderContext.Options));
+
+builder.Services.AddHostedService<RabbitMQCheckoutConsumer>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
