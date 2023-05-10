@@ -1,0 +1,38 @@
+# Deployment YAML file
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: __kubernets.name__-dep
+  labels:
+    app: __kubernets.name__
+spec:
+  replicas: __kubernets.replicas
+  selector:
+    matchLabels:
+      app: __kubernets.name__
+  template:
+    metadata:
+      labels:
+        app: __kubernets.name__
+    spec:
+      containers:
+      - name: __kubernets.name__-cnt
+        image: __kubernets.image__
+        env:
+            - name: connectionString
+              value: "__connectionString__"
+        ports:
+        - containerPort: 80
+apiVersion: v1
+kind: Service
+metadata:
+  name: __kubernets.name__
+spec:
+  selector:
+    app: __kubernets.name__-svc
+  ports:
+  - name: http
+    port: 80
+    targetPort: 80
+  type: LoadBalancer
