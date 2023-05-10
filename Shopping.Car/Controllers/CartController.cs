@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Shopping.Car.Data.ValueObject;
 using Shopping.Car.Messages;
@@ -88,12 +89,25 @@ namespace Shopping.Car.Controllers
         [HttpPost("checkout")]
         public async Task<ActionResult<IEnumerable<CartVO>>> Checkout(CheckoutHeaderVO vo)
         {
+            var token = await HttpContext.GetTokenAsync("access_token");
+
             if (vo.UserId == null)
                 return BadRequest();
 
             var cart = await _cartRepository.FindCartByUserId(vo.UserId);
 
             if (cart == null) return NotFound();
+
+            if (!string.IsNullOrEmpty(vo.CouponCode))
+            {
+                var coupon = await _couponRepository.GetCouponByCouponCode(
+                    vo.CouponCode, token);
+
+                if (vo.DiscountAmount != coupon.DiscountAmount)
+                {
+                    return StatusCode(412);
+                }
+            }
 
             vo.CartDetails = cart.CartDetails;
             vo.DateTime = DateTime.Now;
