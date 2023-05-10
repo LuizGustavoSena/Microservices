@@ -57,3 +57,31 @@
     cd Shopping.Order/
     docker build -t shoppingorder .
     ```
+
+## Kubernets:
+
+- Shopping.Api
+    ```js
+    cd Shopping.Api/
+    kubectl apply -f kubernets.yaml -f service.yaml
+    ```
+- Shopping.Car
+    ```js
+    cd Shopping.Car/
+    kubectl apply -f kubernets.yaml -f service.yaml
+    ```
+- Shopping.Coupon
+    ```js
+    cd Shopping.Coupon/
+    kubectl apply -f kubernets.yaml -f service.yaml
+    ```
+- Shopping.MessageBus
+    ```js
+    cd Shopping.MessageBus/
+    kubectl apply -f kubernets.yaml -f service.yaml
+    ```
+- Shopping.Order
+    ```js
+    cd Shopping.Order/
+    kubectl apply -f kubernets.yaml -f service.yaml
+    ```
