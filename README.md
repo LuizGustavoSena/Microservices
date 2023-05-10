@@ -29,3 +29,31 @@
  ## Coupons
 
  ![Shopping.Coupon](https://github.com/LuizGustavoSena/Microservices/blob/main/images/Shopping.Coupon.png)
+
+ ## Docker Images:
+
+- Shopping.Api
+    ```js
+    cd Shopping.Api/
+    docker build -t shoppingapi .
+    ```
+- Shopping.Car
+    ```js
+    cd Shopping.Car/
+    docker build -t shoppingcar .
+    ```
+- Shopping.Coupon
+    ```js
+    cd Shopping.Coupon/
+    docker build -t shoppingcoupon .
+    ```
+- Shopping.MessageBus
+    ```js
+    cd Shopping.MessageBus/
+    docker build -t shoppingmessagebus .
+    ```
+- Shopping.Order
+    ```js
+    cd Shopping.Order/
+    docker build -t shoppingorder .
+    ```
