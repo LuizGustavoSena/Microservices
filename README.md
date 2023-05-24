@@ -1,22 +1,15 @@
 # Microservices:
+  Microservice focused for shopping, controlling products, shopping car, coupons and purchase processing with RabbitMQ
+
 ### Stack:
 
 <div style="display: inline_block"><br>
-  <img align="center" height="40" width="50" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" />
-  <img align="center" height="40" width="50" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" />    
-  <img align="center" height="40" width="50" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" />
-  <img align="center" height="40" width="50" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" />
-  <img align="center" height="40" width="50" src="https://icon.icepanel.io/Technology/svg/RabbitMQ.svg" />
+  <img align="center" height="60" width="80" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" />
+  <img align="center" height="60" width="80" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" />    
+  <img align="center" height="60" width="80" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" />
+  <img align="center" height="60" width="80" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" />
+  <img align="center" height="60" width="80" src="https://icon.icepanel.io/Technology/svg/RabbitMQ.svg" />
 </div>
-
-### About project:
-
-# Project focused for shopping, controls like:
-
-- Products
-- Shopping Cart
-- Coupons
-- Purchase Processing with RabbitMQ
 
 ## Products
 
